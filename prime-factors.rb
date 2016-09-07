@@ -1,29 +1,20 @@
 # Place your solutions here
-def prime_factors(number)
-	#check what can the number be divisible with, then put in an array
-	divisible = []
-	i = 1
+def prime_factors(number)	
+	prime_arrays = []
+	p = 2
 
-	while i < number do
-		if number%i == 0
-			divisible << i
+	until number == 1
+		if number % p == 0
+			prime_arrays << p
+			number = number / p #replace the number that is divisible already
+		else
+			p += 1
 		end
-		i += 1
-	end 
-	#return divisible
-	prime_number(divisible)
+	end
+
+	return prime_arrays
 end
 
-def prime_number(array)
-	#check whether it is a prime number
-	primes = []
-	  array.each do |x|
-	    numbers = (2..x-1).to_a #range numbers between 1 - 42
-	    factors = numbers.select {|i| x % i == 0}
-	    primes << x if factors.count == 0
-	  end
-	return primes
-end
 
 p prime_factors(3)
 p prime_factors(6)
